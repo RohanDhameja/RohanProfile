@@ -1,0 +1,205 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Mock blog posts data - in a real app, this would come from a CMS or markdown files
+const posts = [
+  {
+    id: 1,
+    title: "The Joy of Teaching Code to Neurodiverse Kids",
+    excerpt: "Reflections on what I've learned from my students in the Buddy Coding Program and how they've changed my perspective on learning and creativity.",
+    date: "December 15, 2024",
+    readTime: "5 min read",
+    image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600",
+    tags: ["Education", "Neurodiversity", "Coding"]
+  },
+  {
+    id: 2,
+    title: "Bridging Cultures Through Music and Technology",
+    excerpt: "How learning both piano and sitar has influenced my approach to building inclusive technology solutions that respect diverse perspectives.",
+    date: "November 28, 2024",
+    readTime: "7 min read",
+    image: "https://images.pexels.com/photos/164743/pexels-photo-164743.jpeg?auto=compress&cs=tinysrgb&w=600",
+    tags: ["Music", "Culture", "Technology"]
+  },
+  {
+    id: 3,
+    title: "Building Community Through Arduino Workshops",
+    excerpt: "The unexpected lessons learned while teaching robotics to underserved communities and how hands-on learning breaks down barriers.",
+    date: "November 12, 2024",
+    readTime: "4 min read",
+    image: "https://images.pexels.com/photos/2977565/pexels-photo-2977565.jpeg?auto=compress&cs=tinysrgb&w=600",
+    tags: ["Arduino", "Community", "STEM"]
+  },
+  {
+    id: 4,
+    title: "The Power of Visual Storytelling in Advocacy",
+    excerpt: "Why I turned to comic strips to raise awareness about neurodiversity and how art can communicate what words sometimes cannot.",
+    date: "October 30, 2024",
+    readTime: "6 min read",
+    image: "https://images.pexels.com/photos/1509582/pexels-photo-1509582.jpeg?auto=compress&cs=tinysrgb&w=600",
+    tags: ["Comics", "Advocacy", "Art"]
+  },
+  {
+    id: 5,
+    title: "Lessons from My First Fusion Concert",
+    excerpt: "What happens when you blend Chopin with traditional Indian ragas? A journey of musical discovery and cultural appreciation.",
+    date: "October 15, 2024",
+    readTime: "5 min read",
+    image: "https://images.pexels.com/photos/164743/pexels-photo-164743.jpeg?auto=compress&cs=tinysrgb&w=600",
+    tags: ["Music", "Performance", "Fusion"]
+  },
+  {
+    id: 6,
+    title: "Creating Accessible User Interfaces",
+    excerpt: "Technical insights into designing digital experiences that work for everyone, inspired by my work with diverse learners.",
+    date: "September 22, 2024",
+    readTime: "8 min read",
+    image: "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=600",
+    tags: ["UX Design", "Accessibility", "Technology"]
+  }
+];
+---
+
+<Layout title="Blog - Rohan">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-primary-50 via-white to-accent-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Thoughts & Reflections</h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        Sharing insights from my journey in creating inclusive technology, teaching diverse learners, 
+        and exploring the intersection of culture, music, and community impact.
+      </p>
+    </div>
+  </section>
+
+  <!-- Featured Post -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="inline-block px-3 py-1 text-sm font-medium text-primary-600 bg-primary-100 rounded-full mb-4">Featured Post</span>
+        <h2 class="text-2xl font-bold text-gray-900">Latest Reflection</h2>
+      </div>
+      
+      <article class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+          <div class="aspect-video bg-gradient-to-br from-primary-100 to-accent-100 relative overflow-hidden">
+            <img 
+              src={posts[0].image} 
+              alt={posts[0].title}
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <div class="flex flex-wrap gap-2 mb-4">
+                {posts[0].tags.map(tag => (
+                  <span class="px-3 py-1 text-xs font-medium text-white bg-white/20 backdrop-blur-sm rounded-full">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <h3 class="text-2xl lg:text-3xl font-bold text-white mb-2">{posts[0].title}</h3>
+              <div class="flex items-center text-white/80 text-sm">
+                <span>{posts[0].date}</span>
+                <span class="mx-2">•</span>
+                <span>{posts[0].readTime}</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-8">
+            <p class="text-lg text-gray-600 leading-relaxed mb-6">
+              {posts[0].excerpt}
+            </p>
+            <a 
+              href={`/blog/${posts[0].id}`}
+              class="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium group"
+            >
+              Read Full Article
+              <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Blog Grid -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">All Posts</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Explore my thoughts on technology, education, music, and community building.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.slice(1).map((post) => (
+          <article key={post.id} class="bg-white rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 overflow-hidden">
+            <div class="aspect-video bg-gray-200 relative overflow-hidden">
+              <img 
+                src={post.image} 
+                alt={post.title}
+                class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex flex-wrap gap-2 mb-3">
+                {post.tags.map(tag => (
+                  <span key={tag} class="px-2 py-1 text-xs font-medium text-primary-600 bg-primary-50 rounded-md">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-primary-600 transition-colors">
+                <a href={`/blog/${post.id}`}>{post.title}</a>
+              </h3>
+              <p class="text-gray-600 leading-relaxed mb-4 line-clamp-3">
+                {post.excerpt}
+              </p>
+              <div class="flex items-center justify-between text-sm text-gray-500">
+                <span>{post.date}</span>
+                <span>{post.readTime}</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Signup -->
+  <section class="py-20 bg-gradient-to-r from-primary-600 to-accent-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6">Stay Connected</h2>
+      <p class="text-xl text-primary-100 mb-8 leading-relaxed">
+        Get notified when I publish new thoughts on inclusive technology, community building, and cultural fusion.
+      </p>
+      <form class="max-w-md mx-auto">
+        <div class="flex gap-4">
+          <input 
+            type="email" 
+            placeholder="Enter your email"
+            class="flex-1 px-4 py-3 rounded-lg border-0 text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-white focus:outline-none"
+          />
+          <button 
+            type="submit"
+            class="px-6 py-3 bg-white text-primary-600 font-medium rounded-lg hover:bg-primary-50 transition-colors duration-200"
+          >
+            Subscribe
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
